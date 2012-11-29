@@ -3,7 +3,7 @@ WhereIs-API-JSON-Client
 
 A Java client for WhereIs API v2
 
-To use, make sure you are registered to use Whereis API 2, and have a valid token and passowrd. Go do that now, while I wait here.
+To use, make sure you are registered to use Whereis API 2, and have a valid token and password. Go do that now, while I wait here.
 
 Oh, you're back? Good, let's continue. Here's how you use it:
 
