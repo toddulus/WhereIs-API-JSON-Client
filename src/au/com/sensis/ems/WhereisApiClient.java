@@ -17,6 +17,7 @@ import au.com.sensis.ems.route.RouteRequest;
 import au.com.sensis.ems.route.RouteResponse;
 import au.com.sensis.ems.route.Waypoint;
 import au.com.sensis.ems.types.Point;
+import au.com.sensis.ems.validation.ValidationResponse;
 
 import org.apache.http.conn.params.ConnRoutePNames;
 
@@ -236,6 +237,30 @@ public class WhereisApiClient {
         String jsonReq = gson.toJson(req);
         String jsonResp = doPost("/geocode/unstructured", jsonReq);
         return gson.fromJson(jsonResp, GeocodeResponse.class);
+    }
+
+    /**
+     * Perform a structured geocode look up
+     * @param req a StructuredGeocodeRequest
+     * @return GeocodeResponse
+     */
+    public ValidationResponse getStructuredValidation(StructuredGeocodeRequest req) throws WhereisApiException {
+        Gson gson = new Gson();
+        String jsonReq = gson.toJson(req);
+        String jsonResp = doPost("/validation/structured", jsonReq);
+        return gson.fromJson(jsonResp, ValidationResponse.class);
+    }
+
+    /**
+     * Perform a structured geocode look up
+     * @param req a StructuredGeocodeRequest
+     * @return GeocodeResponse
+     */
+    public ValidationResponse getUnStructuredValidation(UnstructuredGeocodeRequest req) throws WhereisApiException {
+        Gson gson = new Gson();
+        String jsonReq = gson.toJson(req);
+        String jsonResp = doPost("/validation/unstructured", jsonReq);
+        return gson.fromJson(jsonResp, ValidationResponse.class);
     }
 
     /**
