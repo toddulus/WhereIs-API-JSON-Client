@@ -1,17 +1,13 @@
 package au.com.sensis.ems.route;
 
 import au.com.sensis.ems.types.Point;
-import au.com.sensis.ems.types.Street;
 
 import java.util.Arrays;
 
-public class RouteRequest {
+public class RouteRequest extends BaseRouteRequest {
     
-    private Mode mode;
-    private Method method;
-    private boolean tolls;
     private String imageFormat;
-    private Point[] avoidPoints;
+
     private Waypoint[] waypoints;
 
     /**
@@ -43,42 +39,6 @@ public class RouteRequest {
         this.waypoints = waypoints;
     }
 
-    /**
-     * @return the mode
-     */
-    public Mode getMode() {
-        return mode;
-    }
-    /**
-     * @param mode the mode to set
-     */
-    public void setMode(Mode mode) {
-        this.mode = mode;
-    }
-    /**
-     * @return the method
-     */
-    public Method getMethod() {
-        return method;
-    }
-    /**
-     * @param method the method to set
-     */
-    public void setMethod(Method method) {
-        this.method = method;
-    }
-    /**
-     * @return the tolls
-     */
-    public boolean isTolls() {
-        return tolls;
-    }
-    /**
-     * @param tolls the tolls to set
-     */
-    public void setTolls(boolean tolls) {
-        this.tolls = tolls;
-    }
     /**
      * @return the imageFormat
      */

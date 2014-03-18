@@ -13,9 +13,12 @@ import au.com.sensis.ems.map.MapByZoomRequest;
 import au.com.sensis.ems.map.MapRequest;
 import au.com.sensis.ems.map.MapResponse;
 import au.com.sensis.ems.rank.RankRequest;
+import au.com.sensis.ems.route.BaseRouteRequest;
 import au.com.sensis.ems.route.RouteRequest;
 import au.com.sensis.ems.route.RouteResponse;
 import au.com.sensis.ems.route.Waypoint;
+import au.com.sensis.ems.route.WaypointsRequest;
+import au.com.sensis.ems.route.WaypointsResponse;
 import au.com.sensis.ems.types.Point;
 import au.com.sensis.ems.validation.ValidationResponse;
 
@@ -274,6 +277,14 @@ public class WhereisApiClient {
         String jsonResp = doPost("/route", jsonReq);
         return gson.fromJson(jsonResp, RouteResponse.class);
     }
+    
+    public WaypointsResponse getWaypoints(WaypointsRequest req) throws WhereisApiException {
+        Gson gson = new Gson();
+        String jsonReq = gson.toJson(req);
+        String jsonResp = doPost("/waypoints", jsonReq);
+        return gson.fromJson(jsonResp, WaypointsResponse.class);
+    }
+
     
     private String doPost(String path, String json) throws WhereisApiException {
         return doPost(path, json, null);
