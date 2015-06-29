@@ -29,7 +29,7 @@ public enum GeometryType {
     MARKER,
 
     /**
-     * Route ID. Not Implemented
+     * Route ID.
      */
     ROUTE_ID,
 

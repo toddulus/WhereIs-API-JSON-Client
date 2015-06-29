@@ -6,20 +6,16 @@ import au.com.sensis.ems.geocode.GeocodeResponse;
 import au.com.sensis.ems.geocode.ReverseGeocodeRequest;
 import au.com.sensis.ems.geocode.StructuredGeocodeRequest;
 import au.com.sensis.ems.geocode.UnstructuredGeocodeRequest;
-import au.com.sensis.ems.map.Layer;
 import au.com.sensis.ems.map.MapByBoundsRequest;
 import au.com.sensis.ems.map.MapByRadiusRequest;
 import au.com.sensis.ems.map.MapByZoomRequest;
 import au.com.sensis.ems.map.MapRequest;
 import au.com.sensis.ems.map.MapResponse;
 import au.com.sensis.ems.rank.RankRequest;
-import au.com.sensis.ems.route.BaseRouteRequest;
 import au.com.sensis.ems.route.RouteRequest;
 import au.com.sensis.ems.route.RouteResponse;
-import au.com.sensis.ems.route.Waypoint;
 import au.com.sensis.ems.route.WaypointsRequest;
 import au.com.sensis.ems.route.WaypointsResponse;
-import au.com.sensis.ems.types.Point;
 import au.com.sensis.ems.validation.ValidationResponse;
 
 import org.apache.http.conn.params.ConnRoutePNames;
@@ -78,11 +74,6 @@ import java.util.Map;
  *
  */
 public class WhereisApiClient {
-
-    /**
-     * Enable logging
-     */
-    private static Logger LOG = Logger.getLogger(WhereisApiClient.class);
 
     /**
      * The user token
@@ -293,7 +284,6 @@ public class WhereisApiClient {
     private String doPost(String path, String json, Map<String, String> headers) throws WhereisApiException {
 
         String URL = BASE_URL + path;
-        LOG.info("Request:" + URL + " " + json);
         HttpClient httpclient = new DefaultHttpClient();
         
         if (PROXY_URL != null) {
@@ -316,17 +306,11 @@ public class WhereisApiClient {
         try {
             post.setEntity(new StringEntity(json,"UTF-8"));
             HttpResponse resp = httpclient.execute(post);
-            LOG.debug("Response Status:" + 
-                resp.getStatusLine().getStatusCode() + " " +
-                resp.getStatusLine().getReasonPhrase() 
-            );
             
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             String responseString = responseHandler.handleResponse(resp);
-            LOG.debug("Response String:" + responseString);
             return responseString;
         } catch (IOException e) {
-            LOG.error(e);
             throw new WhereisApiException(e);
         }
     }

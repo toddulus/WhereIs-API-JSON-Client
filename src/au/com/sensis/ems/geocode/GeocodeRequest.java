@@ -8,6 +8,21 @@ public abstract class GeocodeRequest {
     private Point location;
     
     private Pagination pagination;
+    
+    private String[] granularities;
+
+    /**
+     * @return the granularities
+     */
+    public String[] getGranularities() {
+        return granularities;
+    }
+    /**
+     * @param granularities the granularities to set
+     */
+    public void setGranularities(String[] granularities) {
+        this.granularities = granularities;
+    }
     /**
      * @return the location
      */

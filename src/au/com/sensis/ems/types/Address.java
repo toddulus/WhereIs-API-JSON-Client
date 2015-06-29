@@ -7,7 +7,7 @@ public class Address {
     private String number;
     private Street street;
     private String property;
-    private Street intersection;
+    private Street[] intersection;
     private String suburb;
     private String region;
     private String type;
@@ -65,13 +65,13 @@ public class Address {
     /**
      * @return the intersection
      */
-    public Street getIntersection() {
+    public Street[] getIntersection() {
         return intersection;
     }
     /**
      * @param intersection the intersection to set
      */
-    public void setIntersection(Street intersection) {
+    public void setIntersection(Street[] intersection) {
         this.intersection = intersection;
     }
     /**
